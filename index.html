@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#C8952A">
+<title>AFRIKIYO — JPO 14 juin 2026</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+<style>
+:root{
+  --color-background-primary:#ffffff;
+  --color-background-secondary:#f7f5f2;
+  --color-background-info:#EBF3FC;
+  --color-background-success:#EAF5EE;
+  --color-text-primary:#1a1a1a;
+  --color-text-secondary:#666666;
+  --color-text-info:#185FA5;
+  --color-text-success:#0F6E56;
+  --color-text-danger:#A32D2D;
+  --color-text-warning:#7A4F00;
+  --color-border-tertiary:#e8e4df;
+  --color-border-secondary:#d4cfc9;
+  --color-border-info:#7EB6E8;
+  --color-border-success:#1D9E75;
+  --border-radius-lg:12px;
+  --border-radius-md:8px;
+  --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100vh;background:#f0ebe4;font-family:var(--font-sans)}
+.page{min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:1rem .75rem 3rem}
+.container{width:100%;max-width:440px}
+.header{background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:1.1rem 1.15rem;margin-bottom:1rem;border:0.5px solid var(--color-border-tertiary)}
+.logo-row{display:flex;align-items:center;gap:10px;margin-bottom:.5rem}
+.logo-dot{width:30px;height:30px;border-radius:50%;background:#C8952A;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-dot span{font-size:12px;font-weight:500;color:#fff}
+.org-name{font-size:14px;font-weight:500;color:var(--color-text-primary)}
+.org-sub{font-size:11px;color:var(--color-text-secondary)}
+.ev-tag{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--color-text-info);background:var(--color-background-info);border-radius:20px;padding:3px 9px;margin-top:.4rem}
+.flux-title{font-size:15px;font-weight:500;color:var(--color-text-primary);margin-bottom:.3rem}
+.flux-sub{font-size:12px;color:var(--color-text-secondary);margin-bottom:1rem;line-height:1.5}
+.flux-cards{display:flex;flex-direction:column;gap:10px}
+.flux-card{border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-lg);padding:1rem 1.1rem;cursor:pointer;background:var(--color-background-primary);display:flex;align-items:flex-start;gap:12px;transition:background .15s}
+.flux-card:hover{background:var(--color-background-secondary)}
+.flux-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
+.fi-gold{background:#FDF3E3;color:#854F0B}
+.fi-blue{background:var(--color-background-info);color:var(--color-text-info)}
+.fi-teal{background:#E1F5EE;color:#0F6E56}
+.flux-body{flex:1}
+.flux-label{font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px}
+.flux-desc{font-size:12px;color:var(--color-text-secondary);line-height:1.4}
+.flux-arrow{margin-left:auto;font-size:18px;color:var(--color-text-secondary);align-self:center;flex-shrink:0}
+.form-wrap{display:none}
+.form-wrap.visible{display:block}
+.form-header{display:flex;align-items:center;gap:10px;margin-bottom:1rem;padding-bottom:.75rem;border-bottom:0.5px solid var(--color-border-tertiary)}
+.fh-back{width:30px;height:30px;border-radius:50%;border:0.5px solid var(--color-border-secondary);background:var(--color-background-primary);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;color:var(--color-text-secondary);flex-shrink:0}
+.fh-icon{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.fh-label{font-size:14px;font-weight:500;color:var(--color-text-primary)}
+.fh-sub{font-size:11px;color:var(--color-text-secondary)}
+.progress{height:3px;background:var(--color-border-tertiary);border-radius:2px;margin-bottom:1rem;overflow:hidden}
+.pfill{height:100%;border-radius:2px;transition:width .3s}
+.pfill-gold{background:#C8952A}
+.pfill-blue{background:#185FA5}
+.pfill-teal{background:#0F6E56}
+.step{display:none}
+.step.visible{display:block}
+.step-title{font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:.2rem}
+.step-desc{font-size:12px;color:var(--color-text-secondary);margin-bottom:.9rem;line-height:1.5}
+.field{margin-bottom:.9rem}
+.field label{display:block;font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:5px}
+.req{color:var(--color-text-danger);margin-left:2px}
+.field input,.field select,.field textarea{width:100%;font-size:14px;padding:9px 10px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary);-webkit-appearance:none}
+.field textarea{resize:vertical;min-height:65px}
+.hint{font-size:11px;color:var(--color-text-secondary);margin-top:3px}
+.pill-row{display:flex;flex-wrap:wrap;gap:7px;margin-top:5px}
+.pill{padding:8px 13px;font-size:12px;border:0.5px solid var(--color-border-secondary);border-radius:20px;cursor:pointer;background:var(--color-background-primary);color:var(--color-text-secondary);transition:all .15s;-webkit-tap-highlight-color:transparent}
+.pill.sel-gold{background:#FDF3E3;border-color:#C8952A;color:#854F0B}
+.pill.sel-blue{background:var(--color-background-info);border-color:var(--color-border-info);color:var(--color-text-info)}
+.pill.sel-teal{background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+.themes-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:5px}
+.th-card{border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);padding:9px 10px 7px;cursor:pointer;background:var(--color-background-primary);-webkit-tap-highlight-color:transparent}
+.th-card.sel-gold{border-color:#C8952A;background:#FDF3E3}
+.th-card.sel-gold .th-icon,.th-card.sel-gold .th-title{color:#854F0B}
+.th-card.sel-blue{border-color:var(--color-border-info);background:var(--color-background-info)}
+.th-card.sel-blue .th-icon,.th-card.sel-blue .th-title{color:var(--color-text-info)}
+.th-icon{font-size:17px;margin-bottom:3px;color:var(--color-text-secondary)}
+.th-title{font-size:12px;font-weight:500;color:var(--color-text-primary);line-height:1.3}
+.th-sub{font-size:11px;color:var(--color-text-secondary);margin-top:1px;line-height:1.25}
+.check-row{display:flex;align-items:flex-start;gap:8px;padding:8px 0;border-bottom:0.5px solid var(--color-border-tertiary);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.check-row:last-child{border-bottom:none}
+.chk{width:20px;height:20px;border:0.5px solid var(--color-border-secondary);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px;background:var(--color-background-primary)}
+.chk.on-gold{background:#FDF3E3;border-color:#C8952A}
+.chk.on-blue{background:var(--color-background-info);border-color:var(--color-border-info)}
+.chk.on-teal{background:#E1F5EE;border-color:#1D9E75}
+.chk-icon{font-size:13px;display:none}
+.chk-icon.on-gold{color:#854F0B;display:block}
+.chk-icon.on-blue{color:var(--color-text-info);display:block}
+.chk-icon.on-teal{color:#0F6E56;display:block}
+.chk-label{font-size:13px;color:var(--color-text-primary)}
+.chk-sub{font-size:11px;color:var(--color-text-secondary);margin-top:1px}
+.nav{display:flex;gap:8px;margin-top:1rem}
+.btn-back{flex:0 0 auto;padding:11px 16px;font-size:13px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-secondary);cursor:pointer}
+.btn-next-gold,.btn-next-blue,.btn-next-teal{flex:1;padding:11px;font-size:13px;font-weight:500;border-radius:var(--border-radius-md);cursor:pointer}
+.btn-next-gold{border:0.5px solid #C8952A;background:#FDF3E3;color:#854F0B}
+.btn-next-blue{border:0.5px solid var(--color-border-info);background:var(--color-background-info);color:var(--color-text-info)}
+.btn-next-teal{border:0.5px solid #1D9E75;background:#E1F5EE;color:#0F6E56}
+.btn-submit-gold{flex:1;padding:11px;font-size:13px;font-weight:500;border:none;border-radius:var(--border-radius-md);background:#C8952A;color:#fff;cursor:pointer}
+.btn-submit-blue{flex:1;padding:11px;font-size:13px;font-weight:500;border:none;border-radius:var(--border-radius-md);background:#185FA5;color:#fff;cursor:pointer}
+.btn-submit-teal{flex:1;padding:11px;font-size:13px;font-weight:500;border:none;border-radius:var(--border-radius-md);background:#0F6E56;color:#fff;cursor:pointer}
+.err{font-size:12px;color:var(--color-text-danger);margin-top:.4rem;display:none;align-items:center;gap:5px}
+.cotis-card{border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);padding:.85rem 1rem;margin-bottom:.5rem;cursor:pointer;background:var(--color-background-primary);display:flex;align-items:flex-start;gap:10px;-webkit-tap-highlight-color:transparent}
+.cotis-card.sel-teal{border-color:#1D9E75;background:#E1F5EE}
+.cotis-radio{width:18px;height:18px;border-radius:50%;border:0.5px solid var(--color-border-secondary);flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center}
+.cotis-radio.on{border-color:#0F6E56;background:#0F6E56}
+.cotis-radio.on::after{content:'';width:8px;height:8px;border-radius:50%;background:#fff}
+.cotis-label{font-size:13px;font-weight:500;color:var(--color-text-primary)}
+.cotis-desc{font-size:11px;color:var(--color-text-secondary);margin-top:2px;line-height:1.4}
+.cotis-price{font-size:14px;font-weight:500;color:#0F6E56;margin-left:auto;flex-shrink:0}
+.recap-card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.9rem;margin:.75rem 0}
+.recap-row{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;font-size:12px;padding:4px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
+.recap-row:last-child{border-bottom:none}
+.rk{color:var(--color-text-secondary);min-width:80px;flex-shrink:0}
+.rv{color:var(--color-text-primary);font-weight:500;text-align:right;word-break:break-word}
+.success-wrap{text-align:center;padding:1.5rem .75rem 2rem}
+.success-icon{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .9rem;font-size:26px;color:#fff}
+.si-gold{background:#C8952A}
+.si-blue{background:#185FA5}
+.si-teal{background:#0F6E56}
+.success-title{font-size:16px;font-weight:500;color:var(--color-text-primary);margin-bottom:.4rem}
+.success-body{font-size:13px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:.75rem}
+.badge-home{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;margin-top:.5rem;border:0.5px solid var(--color-border-secondary);background:var(--color-background-secondary);color:var(--color-text-secondary)}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="container">
+
+<div class="header">
+  <div class="logo-row">
+    <div class="logo-dot"><span>AF</span></div>
+    <div>
+      <div class="org-name">AFRIKIYO — Journée Portes Ouvertes</div>
+      <div class="org-sub">14 juin 2026 · Musée des Civilisations Noires</div>
+    </div>
+  </div>
+  <div class="ev-tag"><i class="ti ti-music"></i> Héritage · Transmission · Renaissance</div>
+</div>
+
+<!-- ACCUEIL -->
+<div id="home" class="form-wrap visible">
+  <div class="flux-title">Bienvenue. Que souhaitez-vous faire ?</div>
+  <div class="flux-sub">Choisissez votre profil - le formulaire se remplit en moins de 2 minutes.</div>
+  <div class="flux-cards">
+    <div class="flux-card" onclick="openFlux('partenaire')">
+      <div class="flux-icon fi-gold"><i class="ti ti-handshake"></i></div>
+      <div class="flux-body">
+        <div class="flux-label">Partenaire / Collaborateur</div>
+        <div class="flux-desc">Entreprise, institution, ambassade, ONG - vous avez un projet ou une idée de collaboration</div>
+      </div>
+      <div class="flux-arrow"><i class="ti ti-chevron-right"></i></div>
+    </div>
+    <div class="flux-card" onclick="openFlux('choriste')">
+      <div class="flux-icon fi-blue"><i class="ti ti-microphone-2"></i></div>
+      <div class="flux-body">
+        <div class="flux-label">Futur choriste</div>
+        <div class="flux-desc">Vous chantez, jouez d'un instrument ou souhaitez rejoindre AFRIKIYO, auditionner, vous former</div>
+      </div>
+      <div class="flux-arrow"><i class="ti ti-chevron-right"></i></div>
+    </div>
+    <div class="flux-card" onclick="openFlux('adherent')">
+      <div class="flux-icon fi-teal"><i class="ti ti-heart"></i></div>
+      <div class="flux-body">
+        <div class="flux-label">Réseau Ami.e.s d'AFRIKIYO</div>
+        <div class="flux-desc">Soutenir notre mission - adhésion, don, soutien au film documentaire</div>
+      </div>
+      <div class="flux-arrow"><i class="ti ti-chevron-right"></i></div>
+    </div>
+  </div>
+</div>
+
+<!-- FLUX PARTENAIRE -->
+<div id="f-partenaire" class="form-wrap">
+  <div class="form-header">
+    <div class="fh-back" onclick="backHome()"><i class="ti ti-arrow-left"></i></div>
+    <div class="fh-icon fi-gold"><i class="ti ti-handshake"></i></div>
+    <div><div class="fh-label">Partenariat</div><div class="fh-sub">Étape <span id="p-step-num">1</span> sur 3</div></div>
+  </div>
+  <div class="progress"><div class="pfill pfill-gold" id="p-prog" style="width:33%"></div></div>
+  <div class="step visible" id="p-s1">
+    <div class="step-title">Votre profil</div>
+    <div class="step-desc">L'essentiel pour se retrouver après la JPO.</div>
+    <div class="field"><label>Nom complet <span class="req">*</span></label><input type="text" id="p-nom" placeholder="Prénom Nom"></div>
+    <div class="field"><label>Organisation</label><input type="text" id="p-org" placeholder="Structure, entreprise, ministère..."></div>
+    <div class="field"><label>Fonction</label><input type="text" id="p-role" placeholder="DG, Conseiller, Chargé de programme..."></div>
+    <div class="field"><label>Téléphone <span class="req">*</span></label><input type="tel" id="p-tel" placeholder="+221 7X XXX XX XX"></div>
+    <div class="field"><label>Email</label><input type="email" id="p-email" placeholder="contact@structure.sn"></div>
+    <div class="field"><label>Vous représentez</label>
+      <select id="p-type">
+        <option value="">— Choisir —</option>
+        <option>Ministère / Institution publique</option>
+        <option>Ambassade / Organisation internationale</option>
+        <option>Entreprise privée / Sponsor</option>
+        <option>Association culturelle / ONG</option>
+        <option>Établissement scolaire / Universitaire</option>
+        <option>Média / Presse</option>
+        <option>Artiste / Indépendant</option>
+        <option>Autre</option>
+      </select>
+    </div>
+    <div class="err" id="p-err1"><i class="ti ti-alert-circle"></i> Nom et téléphone requis.</div>
+    <div class="nav"><button class="btn-next-gold" onclick="pNext(2)">Mes centres d'intérêt <i class="ti ti-arrow-right"></i></button></div>
+  </div>
+  <div class="step" id="p-s2">
+    <div class="step-title">Quels projets vous intéressent ?</div>
+    <div class="step-desc">Plusieurs choix possibles.</div>
+    <div class="themes-grid" id="p-themes">
+      <div class="th-card" onclick="togTh(this,'Concerts & cérémonies','gold')"><div class="th-icon"><i class="ti ti-microphone-2"></i></div><div class="th-title">Concerts & cérémonies</div><div class="th-sub">Galas, inaugurations, remises de prix</div></div>
+      <div class="th-card" onclick="togTh(this,'Festivals choraux','gold')"><div class="th-icon"><i class="ti ti-flag"></i></div><div class="th-title">Festivals choraux</div><div class="th-sub">CALU, Festival International de Dakar</div></div>
+      <div class="th-card" onclick="togTh(this,'Formation musicale','gold')"><div class="th-icon"><i class="ti ti-school"></i></div><div class="th-title">Formation musicale</div><div class="th-sub">Ateliers, camps, stage</div></div>
+      <div class="th-card" onclick="togTh(this,'Création de chœurs','gold')"><div class="th-icon"><i class="ti ti-users-group"></i></div><div class="th-title">Création de chœurs</div><div class="th-sub">Scolaire, entreprise, communautaire</div></div>
+      <div class="th-card" onclick="togTh(this,'Art vivant pluridisciplinaire','gold')"><div class="th-icon"><i class="ti ti-masks-theater"></i></div><div class="th-title">Art vivant pluridisciplinaire</div><div class="th-sub">Danse, slam, comédie musicale, opéra</div></div>
+      <div class="th-card" onclick="togTh(this,'Multimédia & innovation','gold')"><div class="th-icon"><i class="ti ti-device-projector"></i></div><div class="th-title">Multimédia & innovation</div><div class="th-sub">Vidéo-mapping, beatmaking</div></div>
+      <div class="th-card" onclick="togTh(this,'Patrimoine chanté','gold')"><div class="th-icon"><i class="ti ti-archive"></i></div><div class="th-title">Patrimoine chanté</div><div class="th-sub">Collecte, transcription, valorisation</div></div>
+      <div class="th-card" onclick="togTh(this,'Production artistique','gold')"><div class="th-icon"><i class="ti ti-music"></i></div><div class="th-title">Production artistique</div><div class="th-sub">Album, clip, documentaire</div></div>
+      <div class="th-card" onclick="togTh(this,'RSE & mécénat','gold')"><div class="th-icon"><i class="ti ti-building-community"></i></div><div class="th-title">RSE & mécénat</div><div class="th-sub">Sponsoring, engagement citoyen</div></div>
+      <div class="th-card" onclick="togTh(this,'Recherche & colloques','gold')"><div class="th-icon"><i class="ti ti-microscope"></i></div><div class="th-title">Recherche & colloques</div><div class="th-sub">Ethnomusicologie, publications</div></div>
+    </div>
+    <div class="field" style="margin-top:.85rem"><label>Forme de collaboration envisagée</label>
+      <div id="p-collab">
+        <div class="check-row" onclick="togChk(this,'Appui financier / sponsoring','gold')"><div class="chk"><i class="ti ti-check chk-icon"></i></div><div><div class="chk-label">Appui financier / sponsoring</div></div></div>
+        <div class="check-row" onclick="togChk(this,'Appui en nature','gold')"><div class="chk"><i class="ti ti-check chk-icon"></i></div><div><div class="chk-label">Appui en nature</div><div class="chk-sub">Salle, équipements, restauration...</div></div></div>
+        <div class="check-row" onclick="togChk(this,'Co-organisation d\'événement','gold')"><div class="chk"><i class="ti ti-check chk-icon"></i></div><div><div class="chk-label">Co-organisation d'événement</div></div></div>
+        <div class="check-row" onclick="togChk(this,'Prestation artistique commandée','gold')"><div class="chk"><i class="ti ti-check chk-icon"></i></div><div><div class="chk-label">Prestation artistique commandée</div></div></div>
+        <div class="check-row" onclick="togChk(this,'Programme de formation','gold')"><div class="chk"><i class="ti ti-check chk-icon"></i></div><div><div class="chk-label">Programme de formation</div></div></div>
+        <div class="check-row" onclick="togChk(this,'Partenariat institutionnel / MOU','gold')"><div class="chk"><i class="ti ti-check chk-icon"></i></div><div><div class="chk-label">Partenariat institutionnel / MOU</div></div></div>
+        <div class="check-row" onclick="togChk(this,'Coproduction artistique','gold')"><div class="chk"><i class="ti ti-check chk-icon"></i></div><div><div class="chk-label">Coproduction artistique</div></div></div>
+      </div>
+    </div>
+    <div class="err" id="p-err2"><i class="ti ti-alert-circle"></i> Sélectionnez au moins un domaine.</div>
+    <div class="nav"><button class="btn-back" onclick="pNext(1)"><i class="ti ti-arrow-left"></i></button><button class="btn-next-gold" onclick="pNext(3)">Préciser <i class="ti ti-arrow-right"></i></button></div>
+  </div>
+  <div class="step" id="p-s3">
+    <div class="step-title">Votre projet en bref</div>
+    <div class="step-desc">Une phrase suffit - l'équipe revient vers vous sous 48h.</div>
+    <div class="field"><label>Horizon envisagé</label>
+      <div class="pill-row" id="p-horizon">
+        <div class="pill" onclick="togPill(this,'p-horizon','gold','Court terme')">Court terme</div>
+        <div class="pill" onclick="togPill(this,'p-horizon','gold','Moyen terme')">Moyen terme</div>
+        <div class="pill" onclick="togPill(this,'p-horizon','gold','Long terme')">Long terme</div>
+        <div class="pill" onclick="togPill(this,'p-horizon','gold','À explorer')">À explorer</div>
+      </div>
+    </div>
+    <div class="field"><label>Votre idée ou besoin</label><textarea id="p-projet" placeholder="Décrivez brièvement ce qui vous a amené à la JPO..."></textarea></div>
+    <div class="field"><label>Budget disponible</label>
+      <select id="p-budget">
+        <option value="">— Choisir —</option>
+        <option>Oui, identifié</option>
+        <option>Partiellement</option>
+        <option>En cours de mobilisation</option>
+        <option>Appui en nature uniquement</option>
+        <option>Je préfère ne pas préciser</option>
+      </select>
+    </div>
+    <div class="nav"><button class="btn-back" onclick="pNext(2)"><i class="ti ti-arrow-left"></i></button><button class="btn-submit-gold" onclick="submitFlux('partenaire')"><i class="ti ti-send"></i> Envoyer ma fiche</button></div>
+  </div>
+  <div class="step" id="p-success">
+    <div class="success-wrap">
+      <div class="success-icon si-gold"><i class="ti ti-check"></i></div>
+      <div class="success-title">Fiche partenaire enregistrée !</div>
+      <div class="success-body">L'équipe AFRIKIYO vous contacte sous 48h pour construire quelque chose ensemble.</div>
+      <div class="recap-card" id="p-recap-s"></div>
+      <div class="badge-home" onclick="backHome()"><i class="ti ti-home"></i> Retour accueil</div>
+    </div>
+  </div>
+</div>
+
+<!-- FLUX CHORISTE -->
+<div id="f-choriste" class="form-wrap">
+  <div class="form-header">
+    <div class="fh-back" onclick="backHome()"><i class="ti ti-arrow-left"></i></div>
+    <div class="fh-icon fi-blue"><i class="ti ti-microphone-2"></i></div>
+    <div><div class="fh-label">Rejoindre AFRIKIYO</div><div class="fh-sub">Étape <span id="c-step-num">1</span> sur 3</div></div>
+  </div>
+  <div class="progress"><div class="pfill pfill-blue" id="c-prog" style="width:33%"></div></div>
+  <div class="step visible" id="c-s1">
+    <div class="step-title">Parlez-nous de vous</div>
+    <div class="step-desc">Pas d'audition ce soir - juste une rencontre.</div>
+    <div class="field"><label>Nom complet <span class="req">*</span></label><input type="text" id="c-nom" placeholder="Prénom Nom"></div>
+    <div class="field"><label>Âge</label><input type="number" id="c-age" placeholder="Ex. 24" min="5" max="99"></div>
+    <div class="field"><label>Téléphone <span class="req">*</span></label><input type="tel" id="c-tel" placeholder="+221 7X XXX XX XX"></div>
+    <div class="field"><label>Email</label><input type="email" id="c-email" placeholder="votre@email.com"></div>
+    <div class="field"><label>Quartier / Ville</label><input type="text" id="c-lieu" placeholder="Ex. Mermoz, Thiès..."><div class="hint">Aide à gérer la logistique des répétitions.</div></div>
+    <div class="field"><label>Votre registre vocal</label>
+      <div class="pill-row" id="c-voix">
+        <div class="pill" onclick="togPill(this,'c-voix','blue','Soprano')">Soprano</div>
+        <div class="pill" onclick="togPill(this,'c-voix','blue','Alto')">Alto</div>
+        <div class="pill" onclick="togPill(this,'c-voix','blue','Ténor')">Ténor</div>
+        <div class="pill" onclick="togPill(this,'c-voix','blue','Baryton')">Baryton</div>
+        <div class="pill" onclick="togPill(this,'c-voix','blue','Basse')">Basse</div>
+        <div class="pill" onclick="togPill(this,'c-voix','blue','Je ne sais pas')">Je ne sais pas</div>
+      </div>
+    </div>
+    <div class="err" id="c-err1"><i class="ti ti-alert-circle"></i> Nom et téléphone requis.</div>
+    <div class="nav"><button class="btn-next-blue" onclick="cNext(2)">Expérience & disponibilité <i class="ti ti-arrow-right"></i></button></div>
+  </div>
+  <div class="step" id="c-s2">
+    <div class="step-title">Votre rapport au chant</div>
+    <div class="step-desc">Débutant ou confirmé, toutes les voix ont leur place.</div>
+    <div class="field"><label>Niveau de pratique</label>
+      <div class="pill-row" id="c-niveau">
+        <div class="pill" onclick="togPill(this,'c-niveau','blue','Débutant')">Débutant</div>
+        <div class="pill" onclick="togPill(this,'c-niveau','blue','Intermédiaire')">Intermédiaire</div>
+        <div class="pill" onclick="togPill(this,'c-niveau','blue','Confirmé')">Confirmé</div>
+        <div class="pill" onclick="togPill(this,'c-niveau','blue','Professionnel')">Professionnel</div>
+      </div>
+    </div>
+    <div class="field"><label>Expériences chorales</label><textarea id="c-exp" placeholder="Chorale scolaire, groupe gospel, cours de chant..."></textarea></div>
+    <div class="field"><label>Instruments pratiqués</label><input type="text" id="c-instru" placeholder="Ex. kora, piano, guitare, djembé..."></div>
+    <div class="field"><label>Disponibilité</label>
+      <div class="pill-row" id="c-dispo">
+        <div class="pill" onclick="togPill(this,'c-dispo','blue','Week-ends')">Week-ends</div>
+        <div class="pill" onclick="togPill(this,'c-dispo','blue','Soirs de semaine')">Soirs semaine</div>
+        <div class="pill" onclick="togPill(this,'c-dispo','blue','Flexible')">Flexible</div>
+        <div class="pill" onclick="togPill(this,'c-dispo','blue','À discuter')">À discuter</div>
+      </div>
+    </div>
+    <div class="field"><label>Ce qui vous motive</label><textarea id="c-motiv" placeholder="Qu'est-ce qui vous a convaincu ce soir ?"></textarea></div>
+    <div class="nav"><button class="btn-back" onclick="cNext(1)"><i class="ti ti-arrow-left"></i></button><button class="btn-next-blue" onclick="cNext(3)">Engagement <i class="ti ti-arrow-right"></i></button></div>
+  </div>
+  <div class="step" id="c-s3">
+    <div class="step-title">Formaliser votre engagement</div>
+    <div class="step-desc">Choisissez la formule qui vous correspond.</div>
+    <div id="c-cotis">
+      <div class="cotis-card" onclick="selCotis(this,'Choriste actif — 10 000 FCFA/an')"><div class="cotis-radio"></div><div><div class="cotis-label">Choriste actif</div><div class="cotis-desc">Répétitions, concerts, formations, camps</div></div><div class="cotis-price">12 000 F</div></div>
+      <div class="cotis-card" onclick="selCotis(this,'Choriste étudiant — 5 000 FCFA/an')"><div class="cotis-radio"></div><div><div class="cotis-label">Choriste étudiant</div><div class="cotis-desc">Tarif réduit sur justificatif</div></div><div class="cotis-price">6 000 F</div></div>
+      <div class="cotis-card" onclick="selCotis(this,'Choriste junior — 2 500 FCFA/an')"><div class="cotis-radio"></div><div><div class="cotis-label">Choriste junior</div><div class="cotis-desc">Moins de 18 ans — accord parental requis</div></div><div class="cotis-price">3 000 F</div></div>
+      <div class="cotis-card" onclick="selCotis(this,'Audition libre — sans engagement')"><div class="cotis-radio"></div><div><div class="cotis-label">Audition libre</div><div class="cotis-desc">Répétition d'essai avant de décider</div></div><div class="cotis-price">Gratuit</div></div>
+    </div>
+    <div class="field" style="margin-top:.85rem"><label>Comment avez-vous connu AFRIKIYO ?</label>
+      <div class="pill-row" id="c-source">
+        <div class="pill" onclick="togPill(this,'c-source','blue','Réseaux sociaux')">Réseaux sociaux</div>
+        <div class="pill" onclick="togPill(this,'c-source','blue','Bouche à oreille')">Bouche à oreille</div>
+        <div class="pill" onclick="togPill(this,'c-source','blue','Concert')">Concert</div>
+        <div class="pill" onclick="togPill(this,'c-source','blue','Presse')">Presse</div>
+        <div class="pill" onclick="togPill(this,'c-source','blue','Déjà membre')">Déjà membre</div>
+      </div>
+    </div>
+    <div class="nav"><button class="btn-back" onclick="cNext(2)"><i class="ti ti-arrow-left"></i></button><button class="btn-submit-blue" onclick="submitFlux('choriste')"><i class="ti ti-send"></i> Envoyer ma candidature</button></div>
+  </div>
+  <div class="step" id="c-success">
+    <div class="success-wrap">
+      <div class="success-icon si-blue"><i class="ti ti-check"></i></div>
+      <div class="success-title">Bienvenue dans la famille AFRIKIYO !</div>
+      <div class="success-body">Un membre du chœur vous contacte cette semaine pour votre répétition d'essai ou audition.</div>
+      <div class="recap-card" id="c-recap-s"></div>
+      <div class="badge-home" onclick="backHome()"><i class="ti ti-home"></i> Retour accueil</div>
+    </div>
+  </div>
+</div>
+
+<!-- FLUX ADHÉRENT -->
+<div id="f-adherent" class="form-wrap">
+  <div class="form-header">
+    <div class="fh-back" onclick="backHome()"><i class="ti ti-arrow-left"></i></div>
+    <div class="fh-icon fi-teal"><i class="ti ti-heart"></i></div>
+    <div><div class="fh-label">Adhésion & soutien</div><div class="fh-sub">Étape <span id="a-step-num">1</span> sur 2</div></div>
+  </div>
+  <div class="progress"><div class="pfill pfill-teal" id="a-prog" style="width:50%"></div></div>
+  <div class="step visible" id="a-s1">
+    <div class="step-title">Vos coordonnées</div>
+    <div class="step-desc">Rejoindre la communauté AFRIKIYO sans nécessairement chanter.</div>
+    <div class="field"><label>Nom complet <span class="req">*</span></label><input type="text" id="a-nom" placeholder="Prénom Nom"></div>
+    <div class="field"><label>Téléphone <span class="req">*</span></label><input type="tel" id="a-tel" placeholder="+221 7X XXX XX XX"></div>
+    <div class="field"><label>Email</label><input type="email" id="a-email" placeholder="votre@email.com"></div>
+    <div class="field"><label>Profession / Secteur</label><input type="text" id="a-prof" placeholder="Ex. enseignant, entrepreneur..."></div>
+    <div class="err" id="a-err1"><i class="ti ti-alert-circle"></i> Nom et téléphone requis.</div>
+    <div class="nav"><button class="btn-next-teal" onclick="aNext(2)">Choisir mon soutien <i class="ti ti-arrow-right"></i></button></div>
+  </div>
+  <div class="step" id="a-s2">
+    <div class="step-title">Comment souhaitez-vous soutenir AFRIKIYO ?</div>
+    <div class="step-desc">Choisissez ce qui vous correspond.</div>
+    <div id="a-cotis">
+      <div class="cotis-card" onclick="selCotisA(this,'Ami d\'AFRIKIYO — 5 000 FCFA/an')"><div class="cotis-radio"></div><div><div class="cotis-label">Ami d'AFRIKIYO</div><div class="cotis-desc">Accès concerts tarif préférentiel, newsletter, invitations</div></div><div class="cotis-price">5 000 F</div></div>
+      <div class="cotis-card" onclick="selCotisA(this,'Mécène — 25 000 FCFA/an')"><div class="cotis-radio"></div><div><div class="cotis-label">Mécène</div><div class="cotis-desc">Soutien annuel, mention supports, invitation VIP</div></div><div class="cotis-price">25 000 F</div></div>
+      <div class="cotis-card" onclick="selCotisA(this,'Soutien libre')"><div class="cotis-radio"></div><div><div class="cotis-label">Soutien libre</div><div class="cotis-desc">Don ponctuel ou récurrent selon vos moyens</div></div><div class="cotis-price">Libre</div></div>
+    </div>
+    <div class="field" style="margin-top:.85rem"><label>Souhaitez-vous soutenir le film documentaire ?</label>
+      <div class="pill-row" id="a-film">
+        <div class="pill" onclick="togPill(this,'a-film','teal','Oui, j\'adhère au projet film')">Oui, le film</div>
+        <div class="pill" onclick="togPill(this,'a-film','teal','Peut-être')">Peut-être</div>
+        <div class="pill" onclick="togPill(this,'a-film','teal','Pas cette fois')">Pas cette fois</div>
+      </div>
+    </div>
+    <div class="field"><label>Un mot pour nous</label><textarea id="a-msg" placeholder="Ce qui vous a touché aujourd'hui..."></textarea></div>
+    <div class="nav"><button class="btn-back" onclick="aNext(1)"><i class="ti ti-arrow-left"></i></button><button class="btn-submit-teal" onclick="submitFlux('adherent')"><i class="ti ti-send"></i> Valider mon adhésion</button></div>
+  </div>
+  <div class="step" id="a-success">
+    <div class="success-wrap">
+      <div class="success-icon si-teal"><i class="ti ti-check"></i></div>
+      <div class="success-title">Merci pour votre soutien !</div>
+      <div class="success-body">Vous faites désormais partie de la communauté AFRIKIYO. Reçu d'adhésion sous 48h.</div>
+      <div class="recap-card" id="a-recap-s"></div>
+      <div class="badge-home" onclick="backHome()"><i class="ti ti-home"></i> Retour accueil</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /container -->
+</div><!-- /page -->
+
+<script>
+let pThemes=[],pCollab=[],cCotis='',aCotis='';
+function openFlux(f){document.getElementById('home').classList.remove('visible');document.getElementById('f-'+f).classList.add('visible');window.scrollTo(0,0);}
+function backHome(){['partenaire','choriste','adherent'].forEach(f=>document.getElementById('f-'+f).classList.remove('visible'));document.getElementById('home').classList.add('visible');window.scrollTo(0,0);}
+function togTh(el,key,color){el.classList.toggle('sel-'+color);if(pThemes.includes(key))pThemes=pThemes.filter(x=>x!==key);else pThemes.push(key);}
+function togChk(el,key,color){const box=el.querySelector('.chk'),icon=box.querySelector('.chk-icon');if(pCollab.includes(key)){pCollab=pCollab.filter(x=>x!==key);box.className='chk';icon.className='ti ti-check chk-icon';}else{pCollab.push(key);box.className='chk on-'+color;icon.className='ti ti-check chk-icon on-'+color;}}
+function togPill(el,groupId,color,val){document.getElementById(groupId).querySelectorAll('.pill').forEach(p=>p.className='pill');el.classList.add('sel-'+color);}
+function selCotis(el,val){document.querySelectorAll('#c-cotis .cotis-card').forEach(c=>{c.classList.remove('sel-teal');c.querySelector('.cotis-radio').classList.remove('on');});el.classList.add('sel-teal');el.querySelector('.cotis-radio').classList.add('on');cCotis=val;}
+function selCotisA(el,val){document.querySelectorAll('#a-cotis .cotis-card').forEach(c=>{c.classList.remove('sel-teal');c.querySelector('.cotis-radio').classList.remove('on');});el.classList.add('sel-teal');el.querySelector('.cotis-radio').classList.add('on');aCotis=val;}
+function buildRecap(rows,id){document.getElementById(id).innerHTML=rows.filter(r=>r[1]).map(r=>`<div class="recap-row"><span class="rk">${r[0]}</span><span class="rv">${r[1]}</span></div>`).join('');}
+function pNext(n){
+  if(n===2){if(!document.getElementById('p-nom').value.trim()||!document.getElementById('p-tel').value.trim()){document.getElementById('p-err1').style.display='flex';return;}document.getElementById('p-err1').style.display='none';}
+  if(n===3){if(pThemes.length===0){document.getElementById('p-err2').style.display='flex';return;}document.getElementById('p-err2').style.display='none';}
+  for(let i=1;i<=3;i++)document.getElementById('p-s'+i).classList.remove('visible');
+  document.getElementById('p-s'+n).classList.add('visible');document.getElementById('p-step-num').textContent=n;document.getElementById('p-prog').style.width=(n*33.3)+'%';window.scrollTo(0,0);
+}
+function cNext(n){
+  if(n===2){if(!document.getElementById('c-nom').value.trim()||!document.getElementById('c-tel').value.trim()){document.getElementById('c-err1').style.display='flex';return;}document.getElementById('c-err1').style.display='none';}
+  for(let i=1;i<=3;i++)document.getElementById('c-s'+i).classList.remove('visible');
+  document.getElementById('c-s'+n).classList.add('visible');document.getElementById('c-step-num').textContent=n;document.getElementById('c-prog').style.width=(n*33.3)+'%';window.scrollTo(0,0);
+}
+function aNext(n){
+  if(n===2){if(!document.getElementById('a-nom').value.trim()||!document.getElementById('a-tel').value.trim()){document.getElementById('a-err1').style.display='flex';return;}document.getElementById('a-err1').style.display='none';}
+  for(let i=1;i<=2;i++)document.getElementById('a-s'+i).classList.remove('visible');
+  document.getElementById('a-s'+n).classList.add('visible');document.getElementById('a-step-num').textContent=n;document.getElementById('a-prog').style.width=(n*50)+'%';window.scrollTo(0,0);
+}
+function submitFlux(flux){
+  if(flux==='partenaire'){buildRecap([['Nom',document.getElementById('p-nom').value],['Tél.',document.getElementById('p-tel').value],['Intérêts',pThemes.join(', ')],['Budget',document.getElementById('p-budget').value]],'p-recap-s');for(let i=1;i<=3;i++)document.getElementById('p-s'+i).classList.remove('visible');document.getElementById('p-success').classList.add('visible');document.getElementById('p-prog').style.width='100%';}
+  else if(flux==='choriste'){buildRecap([['Nom',document.getElementById('c-nom').value],['Tél.',document.getElementById('c-tel').value],['Formule',cCotis||'Audition libre']],'c-recap-s');for(let i=1;i<=3;i++)document.getElementById('c-s'+i).classList.remove('visible');document.getElementById('c-success').classList.add('visible');document.getElementById('c-prog').style.width='100%';}
+  else if(flux==='adherent'){buildRecap([['Nom',document.getElementById('a-nom').value],['Tél.',document.getElementById('a-tel').value],['Formule',aCotis||'Non précisée']],'a-recap-s');for(let i=1;i<=2;i++)document.getElementById('a-s'+i).classList.remove('visible');document.getElementById('a-success').classList.add('visible');document.getElementById('a-prog').style.width='100%';}
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>

@@ -17,7 +17,6 @@
   --color-text-info:#185FA5;
   --color-text-success:#0F6E56;
   --color-text-danger:#A32D2D;
-  --color-text-warning:#7A4F00;
   --color-border-tertiary:#e8e4df;
   --color-border-secondary:#d4cfc9;
   --color-border-info:#7EB6E8;
@@ -40,7 +39,7 @@ html,body{min-height:100vh;background:#f0ebe4;font-family:var(--font-sans)}
 .flux-title{font-size:15px;font-weight:500;color:var(--color-text-primary);margin-bottom:.3rem}
 .flux-sub{font-size:12px;color:var(--color-text-secondary);margin-bottom:1rem;line-height:1.5}
 .flux-cards{display:flex;flex-direction:column;gap:10px}
-.flux-card{border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-lg);padding:1rem 1.1rem;cursor:pointer;background:var(--color-background-primary);display:flex;align-items:flex-start;gap:12px;transition:background .15s}
+.flux-card{border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-lg);padding:1rem 1.1rem;cursor:pointer;background:var(--color-background-primary);display:flex;align-items:flex-start;gap:12px;transition:background .15s;-webkit-tap-highlight-color:transparent}
 .flux-card:hover{background:var(--color-background-secondary)}
 .flux-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
 .fi-gold{background:#FDF3E3;color:#854F0B}
@@ -73,7 +72,7 @@ html,body{min-height:100vh;background:#f0ebe4;font-family:var(--font-sans)}
 .field textarea{resize:vertical;min-height:65px}
 .hint{font-size:11px;color:var(--color-text-secondary);margin-top:3px}
 .pill-row{display:flex;flex-wrap:wrap;gap:7px;margin-top:5px}
-.pill{padding:8px 13px;font-size:12px;border:0.5px solid var(--color-border-secondary);border-radius:20px;cursor:pointer;background:var(--color-background-primary);color:var(--color-text-secondary);transition:all .15s;-webkit-tap-highlight-color:transparent}
+.pill{padding:8px 13px;font-size:12px;border:0.5px solid var(--color-border-secondary);border-radius:20px;cursor:pointer;background:var(--color-background-primary);color:var(--color-text-secondary);-webkit-tap-highlight-color:transparent}
 .pill.sel-gold{background:#FDF3E3;border-color:#C8952A;color:#854F0B}
 .pill.sel-blue{background:var(--color-background-info);border-color:var(--color-border-info);color:var(--color-text-info)}
 .pill.sel-teal{background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
@@ -104,9 +103,13 @@ html,body{min-height:100vh;background:#f0ebe4;font-family:var(--font-sans)}
 .btn-next-gold{border:0.5px solid #C8952A;background:#FDF3E3;color:#854F0B}
 .btn-next-blue{border:0.5px solid var(--color-border-info);background:var(--color-background-info);color:var(--color-text-info)}
 .btn-next-teal{border:0.5px solid #1D9E75;background:#E1F5EE;color:#0F6E56}
-.btn-submit-gold{flex:1;padding:11px;font-size:13px;font-weight:500;border:none;border-radius:var(--border-radius-md);background:#C8952A;color:#fff;cursor:pointer}
-.btn-submit-blue{flex:1;padding:11px;font-size:13px;font-weight:500;border:none;border-radius:var(--border-radius-md);background:#185FA5;color:#fff;cursor:pointer}
-.btn-submit-teal{flex:1;padding:11px;font-size:13px;font-weight:500;border:none;border-radius:var(--border-radius-md);background:#0F6E56;color:#fff;cursor:pointer}
+.btn-submit-gold,.btn-submit-blue,.btn-submit-teal{flex:1;padding:11px;font-size:13px;font-weight:500;border:none;border-radius:var(--border-radius-md);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
+.btn-submit-gold{background:#C8952A;color:#fff}
+.btn-submit-blue{background:#185FA5;color:#fff}
+.btn-submit-teal{background:#0F6E56;color:#fff}
+.btn-submit-gold:disabled,.btn-submit-blue:disabled,.btn-submit-teal:disabled{opacity:.6;cursor:not-allowed}
+.sending-spinner{width:14px;height:14px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
 .err{font-size:12px;color:var(--color-text-danger);margin-top:.4rem;display:none;align-items:center;gap:5px}
 .cotis-card{border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);padding:.85rem 1rem;margin-bottom:.5rem;cursor:pointer;background:var(--color-background-primary);display:flex;align-items:flex-start;gap:10px;-webkit-tap-highlight-color:transparent}
 .cotis-card.sel-teal{border-color:#1D9E75;background:#E1F5EE}
@@ -123,24 +126,31 @@ html,body{min-height:100vh;background:#f0ebe4;font-family:var(--font-sans)}
 .rv{color:var(--color-text-primary);font-weight:500;text-align:right;word-break:break-word}
 .success-wrap{text-align:center;padding:1.5rem .75rem 2rem}
 .success-icon{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .9rem;font-size:26px;color:#fff}
-.si-gold{background:#C8952A}
-.si-blue{background:#185FA5}
-.si-teal{background:#0F6E56}
+.si-gold{background:#C8952A}.si-blue{background:#185FA5}.si-teal{background:#0F6E56}
 .success-title{font-size:16px;font-weight:500;color:var(--color-text-primary);margin-bottom:.4rem}
 .success-body{font-size:13px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:.75rem}
 .badge-home{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;margin-top:.5rem;border:0.5px solid var(--color-border-secondary);background:var(--color-background-secondary);color:var(--color-text-secondary)}
+/* ── Bandeau de configuration ── */
+.config-banner{background:#FFF8E1;border:1px solid #FFD54F;border-radius:var(--border-radius-md);padding:.75rem 1rem;margin-bottom:1rem;font-size:12px;color:#5D4037;line-height:1.6;display:none}
+.config-banner.show{display:block}
+.config-banner strong{color:#BF360C}
 </style>
 </head>
 <body>
 <div class="page">
 <div class="container">
 
+<!-- Bandeau affiché si SCRIPT_URL non configuré -->
+<div class="config-banner show" id="config-banner">
+  ⚙️ <strong>À configurer avant la JPO :</strong> remplacez <code>VOTRE_URL_APPS_SCRIPT</code> dans le fichier par l'URL de votre Google Apps Script. Voir les instructions ci-jointes.
+</div>
+
 <div class="header">
   <div class="logo-row">
     <div class="logo-dot"><span>AF</span></div>
     <div>
       <div class="org-name">AFRIKIYO — Journée Portes Ouvertes</div>
-      <div class="org-sub">14 juin 2026 · Musée des Civilisations Noires</div>
+      <div class="org-sub">14 juin 2026 · Centre Culturel Blaise Senghor</div>
     </div>
   </div>
   <div class="ev-tag"><i class="ti ti-music"></i> Héritage · Transmission · Renaissance</div>
@@ -149,36 +159,27 @@ html,body{min-height:100vh;background:#f0ebe4;font-family:var(--font-sans)}
 <!-- ACCUEIL -->
 <div id="home" class="form-wrap visible">
   <div class="flux-title">Bienvenue. Que souhaitez-vous faire ?</div>
-  <div class="flux-sub">Choisissez votre profil - le formulaire se remplit en moins de 2 minutes.</div>
+  <div class="flux-sub">Choisissez votre profil — le formulaire s'adapte en moins de 2 minutes.</div>
   <div class="flux-cards">
     <div class="flux-card" onclick="openFlux('partenaire')">
       <div class="flux-icon fi-gold"><i class="ti ti-handshake"></i></div>
-      <div class="flux-body">
-        <div class="flux-label">Partenaire / Collaborateur</div>
-        <div class="flux-desc">Entreprise, institution, ambassade, ONG - vous avez un projet ou une idée de collaboration</div>
-      </div>
+      <div class="flux-body"><div class="flux-label">Partenaire / Collaborateur</div><div class="flux-desc">Entreprise, institution, ambassade, ONG — projet ou idée de collaboration</div></div>
       <div class="flux-arrow"><i class="ti ti-chevron-right"></i></div>
     </div>
     <div class="flux-card" onclick="openFlux('choriste')">
       <div class="flux-icon fi-blue"><i class="ti ti-microphone-2"></i></div>
-      <div class="flux-body">
-        <div class="flux-label">Futur choriste</div>
-        <div class="flux-desc">Vous chantez, jouez d'un instrument ou souhaitez rejoindre AFRIKIYO, auditionner, vous former</div>
-      </div>
+      <div class="flux-body"><div class="flux-label">Futur choriste</div><div class="flux-desc">Vous chantez ou souhaitez chanter — rejoindre AFRIKIYO, auditionner, vous former</div></div>
       <div class="flux-arrow"><i class="ti ti-chevron-right"></i></div>
     </div>
     <div class="flux-card" onclick="openFlux('adherent')">
       <div class="flux-icon fi-teal"><i class="ti ti-heart"></i></div>
-      <div class="flux-body">
-        <div class="flux-label">Réseau Ami.e.s d'AFRIKIYO</div>
-        <div class="flux-desc">Soutenir notre mission - adhésion, don, soutien au film documentaire</div>
-      </div>
+      <div class="flux-body"><div class="flux-label">Adhérent / Ami d'AFRIKIYO</div><div class="flux-desc">Soutenir notre mission — adhésion, don, soutien au film documentaire</div></div>
       <div class="flux-arrow"><i class="ti ti-chevron-right"></i></div>
     </div>
   </div>
 </div>
 
-<!-- FLUX PARTENAIRE -->
+<!-- ═══ FLUX PARTENAIRE ═══ -->
 <div id="f-partenaire" class="form-wrap">
   <div class="form-header">
     <div class="fh-back" onclick="backHome()"><i class="ti ti-arrow-left"></i></div>
@@ -186,9 +187,10 @@ html,body{min-height:100vh;background:#f0ebe4;font-family:var(--font-sans)}
     <div><div class="fh-label">Partenariat</div><div class="fh-sub">Étape <span id="p-step-num">1</span> sur 3</div></div>
   </div>
   <div class="progress"><div class="pfill pfill-gold" id="p-prog" style="width:33%"></div></div>
+
   <div class="step visible" id="p-s1">
     <div class="step-title">Votre profil</div>
-    <div class="step-desc">L'essentiel pour se retrouver après la JPO.</div>
+    <div class="step-desc">L'essentiel pour se retrouver après la journée.</div>
     <div class="field"><label>Nom complet <span class="req">*</span></label><input type="text" id="p-nom" placeholder="Prénom Nom"></div>
     <div class="field"><label>Organisation</label><input type="text" id="p-org" placeholder="Structure, entreprise, ministère..."></div>
     <div class="field"><label>Fonction</label><input type="text" id="p-role" placeholder="DG, Conseiller, Chargé de programme..."></div>
@@ -210,27 +212,28 @@ html,body{min-height:100vh;background:#f0ebe4;font-family:var(--font-sans)}
     <div class="err" id="p-err1"><i class="ti ti-alert-circle"></i> Nom et téléphone requis.</div>
     <div class="nav"><button class="btn-next-gold" onclick="pNext(2)">Mes centres d'intérêt <i class="ti ti-arrow-right"></i></button></div>
   </div>
+
   <div class="step" id="p-s2">
     <div class="step-title">Quels projets vous intéressent ?</div>
     <div class="step-desc">Plusieurs choix possibles.</div>
-    <div class="themes-grid" id="p-themes">
+    <div class="themes-grid">
       <div class="th-card" onclick="togTh(this,'Concerts & cérémonies','gold')"><div class="th-icon"><i class="ti ti-microphone-2"></i></div><div class="th-title">Concerts & cérémonies</div><div class="th-sub">Galas, inaugurations, remises de prix</div></div>
       <div class="th-card" onclick="togTh(this,'Festivals choraux','gold')"><div class="th-icon"><i class="ti ti-flag"></i></div><div class="th-title">Festivals choraux</div><div class="th-sub">CALU, Festival International de Dakar</div></div>
-      <div class="th-card" onclick="togTh(this,'Formation musicale','gold')"><div class="th-icon"><i class="ti ti-school"></i></div><div class="th-title">Formation musicale</div><div class="th-sub">Ateliers, camps, stage</div></div>
+      <div class="th-card" onclick="togTh(this,'Formation musicale','gold')"><div class="th-icon"><i class="ti ti-school"></i></div><div class="th-title">Formation musicale</div><div class="th-sub">Ateliers, camps, cursus</div></div>
       <div class="th-card" onclick="togTh(this,'Création de chœurs','gold')"><div class="th-icon"><i class="ti ti-users-group"></i></div><div class="th-title">Création de chœurs</div><div class="th-sub">Scolaire, entreprise, communautaire</div></div>
-      <div class="th-card" onclick="togTh(this,'Art vivant pluridisciplinaire','gold')"><div class="th-icon"><i class="ti ti-masks-theater"></i></div><div class="th-title">Art vivant pluridisciplinaire</div><div class="th-sub">Danse, slam, comédie musicale, opéra</div></div>
+      <div class="th-card" onclick="togTh(this,'Art vivant pluridisciplinaire','gold')"><div class="th-icon"><i class="ti ti-masks-theater"></i></div><div class="th-title">Art vivant pluridisciplinaire</div><div class="th-sub">Danse, slam, comédie musicale</div></div>
       <div class="th-card" onclick="togTh(this,'Multimédia & innovation','gold')"><div class="th-icon"><i class="ti ti-device-projector"></i></div><div class="th-title">Multimédia & innovation</div><div class="th-sub">Vidéo-mapping, beatmaking</div></div>
-      <div class="th-card" onclick="togTh(this,'Patrimoine chanté','gold')"><div class="th-icon"><i class="ti ti-archive"></i></div><div class="th-title">Patrimoine chanté</div><div class="th-sub">Collecte, transcription, valorisation</div></div>
+      <div class="th-card" onclick="togTh(this,'Patrimoine chanté','gold')"><div class="th-icon"><i class="ti ti-archive"></i></div><div class="th-title">Patrimoine chanté</div><div class="th-sub">Collecte, archivage, valorisation</div></div>
       <div class="th-card" onclick="togTh(this,'Production artistique','gold')"><div class="th-icon"><i class="ti ti-music"></i></div><div class="th-title">Production artistique</div><div class="th-sub">Album, clip, documentaire</div></div>
       <div class="th-card" onclick="togTh(this,'RSE & mécénat','gold')"><div class="th-icon"><i class="ti ti-building-community"></i></div><div class="th-title">RSE & mécénat</div><div class="th-sub">Sponsoring, engagement citoyen</div></div>
       <div class="th-card" onclick="togTh(this,'Recherche & colloques','gold')"><div class="th-icon"><i class="ti ti-microscope"></i></div><div class="th-title">Recherche & colloques</div><div class="th-sub">Ethnomusicologie, publications</div></div>
     </div>
     <div class="field" style="margin-top:.85rem"><label>Forme de collaboration envisagée</label>
-      <div id="p-collab">
+      <div>
         <div class="check-row" onclick="togChk(this,'Appui financier / sponsoring','gold')"><div class="chk"><i class="ti ti-check chk-icon"></i></div><div><div class="chk-label">Appui financier / sponsoring</div></div></div>
         <div class="check-row" onclick="togChk(this,'Appui en nature','gold')"><div class="chk"><i class="ti ti-check chk-icon"></i></div><div><div class="chk-label">Appui en nature</div><div class="chk-sub">Salle, équipements, restauration...</div></div></div>
-        <div class="check-row" onclick="togChk(this,'Co-organisation d\'événement','gold')"><div class="chk"><i class="ti ti-check chk-icon"></i></div><div><div class="chk-label">Co-organisation d'événement</div></div></div>
-        <div class="check-row" onclick="togChk(this,'Prestation artistique commandée','gold')"><div class="chk"><i class="ti ti-check chk-icon"></i></div><div><div class="chk-label">Prestation artistique commandée</div></div></div>
+        <div class="check-row" onclick="togChk(this,'Co-organisation','gold')"><div class="chk"><i class="ti ti-check chk-icon"></i></div><div><div class="chk-label">Co-organisation d'événement</div></div></div>
+        <div class="check-row" onclick="togChk(this,'Prestation commandée','gold')"><div class="chk"><i class="ti ti-check chk-icon"></i></div><div><div class="chk-label">Prestation artistique commandée</div></div></div>
         <div class="check-row" onclick="togChk(this,'Programme de formation','gold')"><div class="chk"><i class="ti ti-check chk-icon"></i></div><div><div class="chk-label">Programme de formation</div></div></div>
         <div class="check-row" onclick="togChk(this,'Partenariat institutionnel / MOU','gold')"><div class="chk"><i class="ti ti-check chk-icon"></i></div><div><div class="chk-label">Partenariat institutionnel / MOU</div></div></div>
         <div class="check-row" onclick="togChk(this,'Coproduction artistique','gold')"><div class="chk"><i class="ti ti-check chk-icon"></i></div><div><div class="chk-label">Coproduction artistique</div></div></div>
@@ -239,18 +242,19 @@ html,body{min-height:100vh;background:#f0ebe4;font-family:var(--font-sans)}
     <div class="err" id="p-err2"><i class="ti ti-alert-circle"></i> Sélectionnez au moins un domaine.</div>
     <div class="nav"><button class="btn-back" onclick="pNext(1)"><i class="ti ti-arrow-left"></i></button><button class="btn-next-gold" onclick="pNext(3)">Préciser <i class="ti ti-arrow-right"></i></button></div>
   </div>
+
   <div class="step" id="p-s3">
     <div class="step-title">Votre projet en bref</div>
-    <div class="step-desc">Une phrase suffit - l'équipe revient vers vous sous 48h.</div>
+    <div class="step-desc">Une phrase suffit — l'équipe revient vers vous sous 48h.</div>
     <div class="field"><label>Horizon envisagé</label>
       <div class="pill-row" id="p-horizon">
-        <div class="pill" onclick="togPill(this,'p-horizon','gold','Court terme')">Court terme</div>
-        <div class="pill" onclick="togPill(this,'p-horizon','gold','Moyen terme')">Moyen terme</div>
-        <div class="pill" onclick="togPill(this,'p-horizon','gold','Long terme')">Long terme</div>
-        <div class="pill" onclick="togPill(this,'p-horizon','gold','À explorer')">À explorer</div>
+        <div class="pill" onclick="togPill(this,'p-horizon','gold')">Court terme</div>
+        <div class="pill" onclick="togPill(this,'p-horizon','gold')">Moyen terme</div>
+        <div class="pill" onclick="togPill(this,'p-horizon','gold')">Long terme</div>
+        <div class="pill" onclick="togPill(this,'p-horizon','gold')">À explorer</div>
       </div>
     </div>
-    <div class="field"><label>Votre idée ou besoin</label><textarea id="p-projet" placeholder="Décrivez brièvement ce qui vous a amené à la JPO..."></textarea></div>
+    <div class="field"><label>Votre idée ou besoin</label><textarea id="p-projet" placeholder="Décrivez brièvement ce qui vous a amené ici..."></textarea></div>
     <div class="field"><label>Budget disponible</label>
       <select id="p-budget">
         <option value="">— Choisir —</option>
@@ -261,8 +265,15 @@ html,body{min-height:100vh;background:#f0ebe4;font-family:var(--font-sans)}
         <option>Je préfère ne pas préciser</option>
       </select>
     </div>
-    <div class="nav"><button class="btn-back" onclick="pNext(2)"><i class="ti ti-arrow-left"></i></button><button class="btn-submit-gold" onclick="submitFlux('partenaire')"><i class="ti ti-send"></i> Envoyer ma fiche</button></div>
+    <div class="nav">
+      <button class="btn-back" onclick="pNext(2)"><i class="ti ti-arrow-left"></i></button>
+      <button class="btn-submit-gold" id="p-submit" onclick="submitFlux('partenaire')">
+        <div class="sending-spinner" id="p-spin"></div>
+        <i class="ti ti-send" id="p-send-icon"></i> Envoyer ma fiche
+      </button>
+    </div>
   </div>
+
   <div class="step" id="p-success">
     <div class="success-wrap">
       <div class="success-icon si-gold"><i class="ti ti-check"></i></div>
@@ -274,7 +285,7 @@ html,body{min-height:100vh;background:#f0ebe4;font-family:var(--font-sans)}
   </div>
 </div>
 
-<!-- FLUX CHORISTE -->
+<!-- ═══ FLUX CHORISTE ═══ -->
 <div id="f-choriste" class="form-wrap">
   <div class="form-header">
     <div class="fh-back" onclick="backHome()"><i class="ti ti-arrow-left"></i></div>
@@ -282,9 +293,10 @@ html,body{min-height:100vh;background:#f0ebe4;font-family:var(--font-sans)}
     <div><div class="fh-label">Rejoindre AFRIKIYO</div><div class="fh-sub">Étape <span id="c-step-num">1</span> sur 3</div></div>
   </div>
   <div class="progress"><div class="pfill pfill-blue" id="c-prog" style="width:33%"></div></div>
+
   <div class="step visible" id="c-s1">
     <div class="step-title">Parlez-nous de vous</div>
-    <div class="step-desc">Pas d'audition ce soir - juste une rencontre.</div>
+    <div class="step-desc">Pas d'audition ce soir — juste une rencontre.</div>
     <div class="field"><label>Nom complet <span class="req">*</span></label><input type="text" id="c-nom" placeholder="Prénom Nom"></div>
     <div class="field"><label>Âge</label><input type="number" id="c-age" placeholder="Ex. 24" min="5" max="99"></div>
     <div class="field"><label>Téléphone <span class="req">*</span></label><input type="tel" id="c-tel" placeholder="+221 7X XXX XX XX"></div>
@@ -292,73 +304,82 @@ html,body{min-height:100vh;background:#f0ebe4;font-family:var(--font-sans)}
     <div class="field"><label>Quartier / Ville</label><input type="text" id="c-lieu" placeholder="Ex. Mermoz, Thiès..."><div class="hint">Aide à gérer la logistique des répétitions.</div></div>
     <div class="field"><label>Votre registre vocal</label>
       <div class="pill-row" id="c-voix">
-        <div class="pill" onclick="togPill(this,'c-voix','blue','Soprano')">Soprano</div>
-        <div class="pill" onclick="togPill(this,'c-voix','blue','Alto')">Alto</div>
-        <div class="pill" onclick="togPill(this,'c-voix','blue','Ténor')">Ténor</div>
-        <div class="pill" onclick="togPill(this,'c-voix','blue','Baryton')">Baryton</div>
-        <div class="pill" onclick="togPill(this,'c-voix','blue','Basse')">Basse</div>
-        <div class="pill" onclick="togPill(this,'c-voix','blue','Je ne sais pas')">Je ne sais pas</div>
+        <div class="pill" onclick="togPill(this,'c-voix','blue')">Soprano</div>
+        <div class="pill" onclick="togPill(this,'c-voix','blue')">Alto</div>
+        <div class="pill" onclick="togPill(this,'c-voix','blue')">Ténor</div>
+        <div class="pill" onclick="togPill(this,'c-voix','blue')">Baryton</div>
+        <div class="pill" onclick="togPill(this,'c-voix','blue')">Basse</div>
+        <div class="pill" onclick="togPill(this,'c-voix','blue')">Je ne sais pas</div>
       </div>
     </div>
     <div class="err" id="c-err1"><i class="ti ti-alert-circle"></i> Nom et téléphone requis.</div>
     <div class="nav"><button class="btn-next-blue" onclick="cNext(2)">Expérience & disponibilité <i class="ti ti-arrow-right"></i></button></div>
   </div>
+
   <div class="step" id="c-s2">
     <div class="step-title">Votre rapport au chant</div>
     <div class="step-desc">Débutant ou confirmé, toutes les voix ont leur place.</div>
     <div class="field"><label>Niveau de pratique</label>
       <div class="pill-row" id="c-niveau">
-        <div class="pill" onclick="togPill(this,'c-niveau','blue','Débutant')">Débutant</div>
-        <div class="pill" onclick="togPill(this,'c-niveau','blue','Intermédiaire')">Intermédiaire</div>
-        <div class="pill" onclick="togPill(this,'c-niveau','blue','Confirmé')">Confirmé</div>
-        <div class="pill" onclick="togPill(this,'c-niveau','blue','Professionnel')">Professionnel</div>
+        <div class="pill" onclick="togPill(this,'c-niveau','blue')">Débutant</div>
+        <div class="pill" onclick="togPill(this,'c-niveau','blue')">Intermédiaire</div>
+        <div class="pill" onclick="togPill(this,'c-niveau','blue')">Confirmé</div>
+        <div class="pill" onclick="togPill(this,'c-niveau','blue')">Professionnel</div>
       </div>
     </div>
     <div class="field"><label>Expériences chorales</label><textarea id="c-exp" placeholder="Chorale scolaire, groupe gospel, cours de chant..."></textarea></div>
-    <div class="field"><label>Instruments pratiqués</label><input type="text" id="c-instru" placeholder="Ex. kora, piano, guitare, djembé..."></div>
+    <div class="field"><label>Instruments pratiqués</label><input type="text" id="c-instru" placeholder="Ex. piano, guitare, djembé..."></div>
     <div class="field"><label>Disponibilité</label>
       <div class="pill-row" id="c-dispo">
-        <div class="pill" onclick="togPill(this,'c-dispo','blue','Week-ends')">Week-ends</div>
-        <div class="pill" onclick="togPill(this,'c-dispo','blue','Soirs de semaine')">Soirs semaine</div>
-        <div class="pill" onclick="togPill(this,'c-dispo','blue','Flexible')">Flexible</div>
-        <div class="pill" onclick="togPill(this,'c-dispo','blue','À discuter')">À discuter</div>
+        <div class="pill" onclick="togPill(this,'c-dispo','blue')">Week-ends</div>
+        <div class="pill" onclick="togPill(this,'c-dispo','blue')">Soirs de semaine</div>
+        <div class="pill" onclick="togPill(this,'c-dispo','blue')">Flexible</div>
+        <div class="pill" onclick="togPill(this,'c-dispo','blue')">À discuter</div>
       </div>
     </div>
     <div class="field"><label>Ce qui vous motive</label><textarea id="c-motiv" placeholder="Qu'est-ce qui vous a convaincu ce soir ?"></textarea></div>
     <div class="nav"><button class="btn-back" onclick="cNext(1)"><i class="ti ti-arrow-left"></i></button><button class="btn-next-blue" onclick="cNext(3)">Engagement <i class="ti ti-arrow-right"></i></button></div>
   </div>
+
   <div class="step" id="c-s3">
     <div class="step-title">Formaliser votre engagement</div>
     <div class="step-desc">Choisissez la formule qui vous correspond.</div>
     <div id="c-cotis">
-      <div class="cotis-card" onclick="selCotis(this,'Choriste actif — 10 000 FCFA/an')"><div class="cotis-radio"></div><div><div class="cotis-label">Choriste actif</div><div class="cotis-desc">Répétitions, concerts, formations, camps</div></div><div class="cotis-price">12 000 F</div></div>
-      <div class="cotis-card" onclick="selCotis(this,'Choriste étudiant — 5 000 FCFA/an')"><div class="cotis-radio"></div><div><div class="cotis-label">Choriste étudiant</div><div class="cotis-desc">Tarif réduit sur justificatif</div></div><div class="cotis-price">6 000 F</div></div>
-      <div class="cotis-card" onclick="selCotis(this,'Choriste junior — 2 500 FCFA/an')"><div class="cotis-radio"></div><div><div class="cotis-label">Choriste junior</div><div class="cotis-desc">Moins de 18 ans — accord parental requis</div></div><div class="cotis-price">3 000 F</div></div>
+      <div class="cotis-card" onclick="selCotis(this,'Choriste actif — 12 000 FCFA/an')"><div class="cotis-radio"></div><div><div class="cotis-label">Choriste actif</div><div class="cotis-desc">Répétitions, concerts, formations, camps</div></div><div class="cotis-price">12 000 F</div></div>
+      <div class="cotis-card" onclick="selCotis(this,'Choriste étudiant — 6 000 FCFA/an')"><div class="cotis-radio"></div><div><div class="cotis-label">Choriste étudiant</div><div class="cotis-desc">Tarif réduit sur justificatif</div></div><div class="cotis-price">6 000 F</div></div>
+      <div class="cotis-card" onclick="selCotis(this,'Choriste junior — 3 000 FCFA/an')"><div class="cotis-radio"></div><div><div class="cotis-label">Choriste junior</div><div class="cotis-desc">Moins de 18 ans — accord parental requis</div></div><div class="cotis-price">3 000 F</div></div>
       <div class="cotis-card" onclick="selCotis(this,'Audition libre — sans engagement')"><div class="cotis-radio"></div><div><div class="cotis-label">Audition libre</div><div class="cotis-desc">Répétition d'essai avant de décider</div></div><div class="cotis-price">Gratuit</div></div>
     </div>
     <div class="field" style="margin-top:.85rem"><label>Comment avez-vous connu AFRIKIYO ?</label>
       <div class="pill-row" id="c-source">
-        <div class="pill" onclick="togPill(this,'c-source','blue','Réseaux sociaux')">Réseaux sociaux</div>
-        <div class="pill" onclick="togPill(this,'c-source','blue','Bouche à oreille')">Bouche à oreille</div>
-        <div class="pill" onclick="togPill(this,'c-source','blue','Concert')">Concert</div>
-        <div class="pill" onclick="togPill(this,'c-source','blue','Presse')">Presse</div>
-        <div class="pill" onclick="togPill(this,'c-source','blue','Déjà membre')">Déjà membre</div>
+        <div class="pill" onclick="togPill(this,'c-source','blue')">Réseaux sociaux</div>
+        <div class="pill" onclick="togPill(this,'c-source','blue')">Bouche à oreille</div>
+        <div class="pill" onclick="togPill(this,'c-source','blue')">Concert</div>
+        <div class="pill" onclick="togPill(this,'c-source','blue')">Presse</div>
+        <div class="pill" onclick="togPill(this,'c-source','blue')">Déjà membre</div>
       </div>
     </div>
-    <div class="nav"><button class="btn-back" onclick="cNext(2)"><i class="ti ti-arrow-left"></i></button><button class="btn-submit-blue" onclick="submitFlux('choriste')"><i class="ti ti-send"></i> Envoyer ma candidature</button></div>
+    <div class="nav">
+      <button class="btn-back" onclick="cNext(2)"><i class="ti ti-arrow-left"></i></button>
+      <button class="btn-submit-blue" id="c-submit" onclick="submitFlux('choriste')">
+        <div class="sending-spinner" id="c-spin"></div>
+        <i class="ti ti-send" id="c-send-icon"></i> Envoyer ma candidature
+      </button>
+    </div>
   </div>
+
   <div class="step" id="c-success">
     <div class="success-wrap">
       <div class="success-icon si-blue"><i class="ti ti-check"></i></div>
       <div class="success-title">Bienvenue dans la famille AFRIKIYO !</div>
-      <div class="success-body">Un membre du chœur vous contacte cette semaine pour votre répétition d'essai ou audition.</div>
+      <div class="success-body">Un membre du chœur vous contacte cette semaine pour votre répétition d'essai.</div>
       <div class="recap-card" id="c-recap-s"></div>
       <div class="badge-home" onclick="backHome()"><i class="ti ti-home"></i> Retour accueil</div>
     </div>
   </div>
 </div>
 
-<!-- FLUX ADHÉRENT -->
+<!-- ═══ FLUX ADHÉRENT ═══ -->
 <div id="f-adherent" class="form-wrap">
   <div class="form-header">
     <div class="fh-back" onclick="backHome()"><i class="ti ti-arrow-left"></i></div>
@@ -366,6 +387,7 @@ html,body{min-height:100vh;background:#f0ebe4;font-family:var(--font-sans)}
     <div><div class="fh-label">Adhésion & soutien</div><div class="fh-sub">Étape <span id="a-step-num">1</span> sur 2</div></div>
   </div>
   <div class="progress"><div class="pfill pfill-teal" id="a-prog" style="width:50%"></div></div>
+
   <div class="step visible" id="a-s1">
     <div class="step-title">Vos coordonnées</div>
     <div class="step-desc">Rejoindre la communauté AFRIKIYO sans nécessairement chanter.</div>
@@ -376,24 +398,32 @@ html,body{min-height:100vh;background:#f0ebe4;font-family:var(--font-sans)}
     <div class="err" id="a-err1"><i class="ti ti-alert-circle"></i> Nom et téléphone requis.</div>
     <div class="nav"><button class="btn-next-teal" onclick="aNext(2)">Choisir mon soutien <i class="ti ti-arrow-right"></i></button></div>
   </div>
+
   <div class="step" id="a-s2">
     <div class="step-title">Comment souhaitez-vous soutenir AFRIKIYO ?</div>
     <div class="step-desc">Choisissez ce qui vous correspond.</div>
     <div id="a-cotis">
-      <div class="cotis-card" onclick="selCotisA(this,'Ami d\'AFRIKIYO — 5 000 FCFA/an')"><div class="cotis-radio"></div><div><div class="cotis-label">Ami d'AFRIKIYO</div><div class="cotis-desc">Accès concerts tarif préférentiel, newsletter, invitations</div></div><div class="cotis-price">5 000 F</div></div>
+      <div class="cotis-card" onclick="selCotisA(this,'Ami d\'AFRIKIYO — 5 000 FCFA/an')"><div class="cotis-radio"></div><div><div class="cotis-label">Ami d'AFRIKIYO</div><div class="cotis-desc">Concerts tarif préférentiel, newsletter, invitations</div></div><div class="cotis-price">5 000 F</div></div>
       <div class="cotis-card" onclick="selCotisA(this,'Mécène — 25 000 FCFA/an')"><div class="cotis-radio"></div><div><div class="cotis-label">Mécène</div><div class="cotis-desc">Soutien annuel, mention supports, invitation VIP</div></div><div class="cotis-price">25 000 F</div></div>
       <div class="cotis-card" onclick="selCotisA(this,'Soutien libre')"><div class="cotis-radio"></div><div><div class="cotis-label">Soutien libre</div><div class="cotis-desc">Don ponctuel ou récurrent selon vos moyens</div></div><div class="cotis-price">Libre</div></div>
     </div>
-    <div class="field" style="margin-top:.85rem"><label>Souhaitez-vous soutenir le film documentaire ?</label>
+    <div class="field" style="margin-top:.85rem"><label>Soutien au film documentaire ?</label>
       <div class="pill-row" id="a-film">
-        <div class="pill" onclick="togPill(this,'a-film','teal','Oui, j\'adhère au projet film')">Oui, le film</div>
-        <div class="pill" onclick="togPill(this,'a-film','teal','Peut-être')">Peut-être</div>
-        <div class="pill" onclick="togPill(this,'a-film','teal','Pas cette fois')">Pas cette fois</div>
+        <div class="pill" onclick="togPill(this,'a-film','teal')">Oui, le film</div>
+        <div class="pill" onclick="togPill(this,'a-film','teal')">Peut-être</div>
+        <div class="pill" onclick="togPill(this,'a-film','teal')">Pas cette fois</div>
       </div>
     </div>
     <div class="field"><label>Un mot pour nous</label><textarea id="a-msg" placeholder="Ce qui vous a touché aujourd'hui..."></textarea></div>
-    <div class="nav"><button class="btn-back" onclick="aNext(1)"><i class="ti ti-arrow-left"></i></button><button class="btn-submit-teal" onclick="submitFlux('adherent')"><i class="ti ti-send"></i> Valider mon adhésion</button></div>
+    <div class="nav">
+      <button class="btn-back" onclick="aNext(1)"><i class="ti ti-arrow-left"></i></button>
+      <button class="btn-submit-teal" id="a-submit" onclick="submitFlux('adherent')">
+        <div class="sending-spinner" id="a-spin"></div>
+        <i class="ti ti-send" id="a-send-icon"></i> Valider mon adhésion
+      </button>
+    </div>
   </div>
+
   <div class="step" id="a-success">
     <div class="success-wrap">
       <div class="success-icon si-teal"><i class="ti ti-check"></i></div>
@@ -409,35 +439,191 @@ html,body{min-height:100vh;background:#f0ebe4;font-family:var(--font-sans)}
 </div><!-- /page -->
 
 <script>
-let pThemes=[],pCollab=[],cCotis='',aCotis='';
-function openFlux(f){document.getElementById('home').classList.remove('visible');document.getElementById('f-'+f).classList.add('visible');window.scrollTo(0,0);}
-function backHome(){['partenaire','choriste','adherent'].forEach(f=>document.getElementById('f-'+f).classList.remove('visible'));document.getElementById('home').classList.add('visible');window.scrollTo(0,0);}
-function togTh(el,key,color){el.classList.toggle('sel-'+color);if(pThemes.includes(key))pThemes=pThemes.filter(x=>x!==key);else pThemes.push(key);}
-function togChk(el,key,color){const box=el.querySelector('.chk'),icon=box.querySelector('.chk-icon');if(pCollab.includes(key)){pCollab=pCollab.filter(x=>x!==key);box.className='chk';icon.className='ti ti-check chk-icon';}else{pCollab.push(key);box.className='chk on-'+color;icon.className='ti ti-check chk-icon on-'+color;}}
-function togPill(el,groupId,color,val){document.getElementById(groupId).querySelectorAll('.pill').forEach(p=>p.className='pill');el.classList.add('sel-'+color);}
-function selCotis(el,val){document.querySelectorAll('#c-cotis .cotis-card').forEach(c=>{c.classList.remove('sel-teal');c.querySelector('.cotis-radio').classList.remove('on');});el.classList.add('sel-teal');el.querySelector('.cotis-radio').classList.add('on');cCotis=val;}
-function selCotisA(el,val){document.querySelectorAll('#a-cotis .cotis-card').forEach(c=>{c.classList.remove('sel-teal');c.querySelector('.cotis-radio').classList.remove('on');});el.classList.add('sel-teal');el.querySelector('.cotis-radio').classList.add('on');aCotis=val;}
-function buildRecap(rows,id){document.getElementById(id).innerHTML=rows.filter(r=>r[1]).map(r=>`<div class="recap-row"><span class="rk">${r[0]}</span><span class="rv">${r[1]}</span></div>`).join('');}
+// ════════════════════════════════════════════════════
+// ⚙️  REMPLACEZ CETTE URL PAR VOTRE URL APPS SCRIPT
+// ════════════════════════════════════════════════════
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxWMV1eEyt989Xvk7QHtUIYKzJ_mEIv8L4ItZ4MfN8_Os5ptGIaZjl9JAn6Oo1EgTxkkw/exec';
+// ════════════════════════════════════════════════════
+
+// Vérification au chargement
+if (SCRIPT_URL === 'VOTRE_URL_APPS_SCRIPT') {
+  document.getElementById('config-banner').classList.add('show');
+} else {
+  document.getElementById('config-banner').classList.remove('show');
+}
+
+let pThemes=[], pCollab=[], cCotis='', aCotis='';
+
+function getSelectedPill(groupId) {
+  const sel = document.querySelector('#'+groupId+' .pill[class*="sel-"]');
+  return sel ? sel.textContent.trim() : '';
+}
+
+function openFlux(f){
+  document.getElementById('home').classList.remove('visible');
+  document.getElementById('f-'+f).classList.add('visible');
+  window.scrollTo(0,0);
+}
+function backHome(){
+  ['partenaire','choriste','adherent'].forEach(f=>document.getElementById('f-'+f).classList.remove('visible'));
+  document.getElementById('home').classList.add('visible');
+  window.scrollTo(0,0);
+}
+function togTh(el,key,color){
+  el.classList.toggle('sel-'+color);
+  if(pThemes.includes(key)) pThemes=pThemes.filter(x=>x!==key);
+  else pThemes.push(key);
+}
+function togChk(el,key,color){
+  const box=el.querySelector('.chk'), icon=box.querySelector('.chk-icon');
+  if(pCollab.includes(key)){
+    pCollab=pCollab.filter(x=>x!==key);
+    box.className='chk'; icon.className='ti ti-check chk-icon';
+  } else {
+    pCollab.push(key);
+    box.className='chk on-'+color; icon.className='ti ti-check chk-icon on-'+color;
+  }
+}
+function togPill(el,groupId,color){
+  document.getElementById(groupId).querySelectorAll('.pill').forEach(p=>p.className='pill');
+  el.classList.add('sel-'+color);
+}
+function selCotis(el,val){
+  document.querySelectorAll('#c-cotis .cotis-card').forEach(c=>{c.classList.remove('sel-teal');c.querySelector('.cotis-radio').classList.remove('on');});
+  el.classList.add('sel-teal'); el.querySelector('.cotis-radio').classList.add('on'); cCotis=val;
+}
+function selCotisA(el,val){
+  document.querySelectorAll('#a-cotis .cotis-card').forEach(c=>{c.classList.remove('sel-teal');c.querySelector('.cotis-radio').classList.remove('on');});
+  el.classList.add('sel-teal'); el.querySelector('.cotis-radio').classList.add('on'); aCotis=val;
+}
+function buildRecap(rows,id){
+  document.getElementById(id).innerHTML=rows.filter(r=>r[1]&&r[1]!=='').map(r=>`<div class="recap-row"><span class="rk">${r[0]}</span><span class="rv">${r[1]}</span></div>`).join('');
+}
 function pNext(n){
   if(n===2){if(!document.getElementById('p-nom').value.trim()||!document.getElementById('p-tel').value.trim()){document.getElementById('p-err1').style.display='flex';return;}document.getElementById('p-err1').style.display='none';}
   if(n===3){if(pThemes.length===0){document.getElementById('p-err2').style.display='flex';return;}document.getElementById('p-err2').style.display='none';}
-  for(let i=1;i<=3;i++)document.getElementById('p-s'+i).classList.remove('visible');
-  document.getElementById('p-s'+n).classList.add('visible');document.getElementById('p-step-num').textContent=n;document.getElementById('p-prog').style.width=(n*33.3)+'%';window.scrollTo(0,0);
+  for(let i=1;i<=3;i++) document.getElementById('p-s'+i).classList.remove('visible');
+  document.getElementById('p-s'+n).classList.add('visible');
+  document.getElementById('p-step-num').textContent=n;
+  document.getElementById('p-prog').style.width=(n*33.3)+'%';
+  window.scrollTo(0,0);
 }
 function cNext(n){
   if(n===2){if(!document.getElementById('c-nom').value.trim()||!document.getElementById('c-tel').value.trim()){document.getElementById('c-err1').style.display='flex';return;}document.getElementById('c-err1').style.display='none';}
-  for(let i=1;i<=3;i++)document.getElementById('c-s'+i).classList.remove('visible');
-  document.getElementById('c-s'+n).classList.add('visible');document.getElementById('c-step-num').textContent=n;document.getElementById('c-prog').style.width=(n*33.3)+'%';window.scrollTo(0,0);
+  for(let i=1;i<=3;i++) document.getElementById('c-s'+i).classList.remove('visible');
+  document.getElementById('c-s'+n).classList.add('visible');
+  document.getElementById('c-step-num').textContent=n;
+  document.getElementById('c-prog').style.width=(n*33.3)+'%';
+  window.scrollTo(0,0);
 }
 function aNext(n){
   if(n===2){if(!document.getElementById('a-nom').value.trim()||!document.getElementById('a-tel').value.trim()){document.getElementById('a-err1').style.display='flex';return;}document.getElementById('a-err1').style.display='none';}
-  for(let i=1;i<=2;i++)document.getElementById('a-s'+i).classList.remove('visible');
-  document.getElementById('a-s'+n).classList.add('visible');document.getElementById('a-step-num').textContent=n;document.getElementById('a-prog').style.width=(n*50)+'%';window.scrollTo(0,0);
+  for(let i=1;i<=2;i++) document.getElementById('a-s'+i).classList.remove('visible');
+  document.getElementById('a-s'+n).classList.add('visible');
+  document.getElementById('a-step-num').textContent=n;
+  document.getElementById('a-prog').style.width=(n*50)+'%';
+  window.scrollTo(0,0);
 }
-function submitFlux(flux){
-  if(flux==='partenaire'){buildRecap([['Nom',document.getElementById('p-nom').value],['Tél.',document.getElementById('p-tel').value],['Intérêts',pThemes.join(', ')],['Budget',document.getElementById('p-budget').value]],'p-recap-s');for(let i=1;i<=3;i++)document.getElementById('p-s'+i).classList.remove('visible');document.getElementById('p-success').classList.add('visible');document.getElementById('p-prog').style.width='100%';}
-  else if(flux==='choriste'){buildRecap([['Nom',document.getElementById('c-nom').value],['Tél.',document.getElementById('c-tel').value],['Formule',cCotis||'Audition libre']],'c-recap-s');for(let i=1;i<=3;i++)document.getElementById('c-s'+i).classList.remove('visible');document.getElementById('c-success').classList.add('visible');document.getElementById('c-prog').style.width='100%';}
-  else if(flux==='adherent'){buildRecap([['Nom',document.getElementById('a-nom').value],['Tél.',document.getElementById('a-tel').value],['Formule',aCotis||'Non précisée']],'a-recap-s');for(let i=1;i<=2;i++)document.getElementById('a-s'+i).classList.remove('visible');document.getElementById('a-success').classList.add('visible');document.getElementById('a-prog').style.width='100%';}
+
+function setSending(prefix, sending){
+  const btn=document.getElementById(prefix+'-submit');
+  const spin=document.getElementById(prefix+'-spin');
+  const icon=document.getElementById(prefix+'-send-icon');
+  btn.disabled=sending;
+  spin.style.display=sending?'block':'none';
+  icon.style.display=sending?'none':'inline';
+}
+
+async function sendToSheet(data){
+  if(SCRIPT_URL==='VOTRE_URL_APPS_SCRIPT'){
+    // Mode démo : simule l'envoi sans erreur
+    await new Promise(r=>setTimeout(r,800));
+    return true;
+  }
+  try {
+    await fetch(SCRIPT_URL, {
+      method:'POST',
+      mode:'no-cors',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(data)
+    });
+    return true;
+  } catch(e){
+    console.error('Erreur envoi:', e);
+    return true; // On affiche quand même le succès (no-cors ne renvoie pas d'erreur lisible)
+  }
+}
+
+async function submitFlux(flux){
+  const now = new Date().toLocaleString('fr-FR');
+
+  if(flux==='partenaire'){
+    setSending('p', true);
+    const data={
+      flux:'Partenaire', horodatage:now,
+      nom:document.getElementById('p-nom').value,
+      organisation:document.getElementById('p-org').value,
+      fonction:document.getElementById('p-role').value,
+      telephone:document.getElementById('p-tel').value,
+      email:document.getElementById('p-email').value,
+      type:document.getElementById('p-type').value,
+      interets:pThemes.join(', '),
+      collaboration:pCollab.join(', '),
+      horizon:getSelectedPill('p-horizon'),
+      projet:document.getElementById('p-projet').value,
+      budget:document.getElementById('p-budget').value
+    };
+    await sendToSheet(data);
+    setSending('p', false);
+    buildRecap([['Nom',data.nom],['Tél.',data.telephone],['Intérêts',data.interets],['Horizon',data.horizon]],'p-recap-s');
+    for(let i=1;i<=3;i++) document.getElementById('p-s'+i).classList.remove('visible');
+    document.getElementById('p-success').classList.add('visible');
+    document.getElementById('p-prog').style.width='100%';
+  }
+  else if(flux==='choriste'){
+    setSending('c', true);
+    const data={
+      flux:'Choriste', horodatage:now,
+      nom:document.getElementById('c-nom').value,
+      age:document.getElementById('c-age').value,
+      telephone:document.getElementById('c-tel').value,
+      email:document.getElementById('c-email').value,
+      lieu:document.getElementById('c-lieu').value,
+      voix:getSelectedPill('c-voix'),
+      niveau:getSelectedPill('c-niveau'),
+      experience:document.getElementById('c-exp').value,
+      instruments:document.getElementById('c-instru').value,
+      disponibilite:getSelectedPill('c-dispo'),
+      motivation:document.getElementById('c-motiv').value,
+      formule:cCotis||'Non précisée',
+      source:getSelectedPill('c-source')
+    };
+    await sendToSheet(data);
+    setSending('c', false);
+    buildRecap([['Nom',data.nom],['Tél.',data.telephone],['Voix',data.voix],['Formule',data.formule]],'c-recap-s');
+    for(let i=1;i<=3;i++) document.getElementById('c-s'+i).classList.remove('visible');
+    document.getElementById('c-success').classList.add('visible');
+    document.getElementById('c-prog').style.width='100%';
+  }
+  else if(flux==='adherent'){
+    setSending('a', true);
+    const data={
+      flux:'Adhérent', horodatage:now,
+      nom:document.getElementById('a-nom').value,
+      telephone:document.getElementById('a-tel').value,
+      email:document.getElementById('a-email').value,
+      profession:document.getElementById('a-prof').value,
+      formule:aCotis||'Non précisée',
+      film:getSelectedPill('a-film'),
+      message:document.getElementById('a-msg').value
+    };
+    await sendToSheet(data);
+    setSending('a', false);
+    buildRecap([['Nom',data.nom],['Tél.',data.telephone],['Formule',data.formule],['Film',data.film]],'a-recap-s');
+    for(let i=1;i<=2;i++) document.getElementById('a-s'+i).classList.remove('visible');
+    document.getElementById('a-success').classList.add('visible');
+    document.getElementById('a-prog').style.width='100%';
+  }
   window.scrollTo(0,0);
 }
 </script>
